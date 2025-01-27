@@ -4,7 +4,6 @@ public class Item {
     int code;
     ItemType type;
     boolean isAvailable;
-
     int cost;
 
     Item(int c, ItemType i){

@@ -9,7 +9,7 @@ public abstract class logLevel {
     public static int ERROR=3;
     logLevel nextLogger;
     logLevel(logLevel nextLogger){
-        Map<Integer, String > map = new HashMap<>();
+//        Map<Integer, String > map = new HashMap<>();
         this.nextLogger = nextLogger;
     }
 

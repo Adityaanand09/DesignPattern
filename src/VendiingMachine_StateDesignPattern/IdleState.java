@@ -15,7 +15,6 @@ public class IdleState implements State{
 //
 //        machine.state = StateType.PRESS_ENTER_MONEY;
         machine.setVMState(new HasMoney());
-
     }
 
     @Override

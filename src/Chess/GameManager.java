@@ -5,18 +5,50 @@ import Chess.IMoveStrategy.*;
 import java.util.*;
 
 public class GameManager {
+    Deque<Player> chance = null;
+    Square[][] board = null;
     GameManager(){
         PrepareBoard();
+        chance = new ArrayDeque<>();
+        Player p1 =new Player(Colour.Black);
+        Player p2 =new Player(Colour.White);
+        chance.add(p1);
+        chance.add(p2);
     }
 
-    public Player StartGame(){
-        Queue<Player> chance = new ArrayDeque<>();
-        List<String> l = new ArrayList<>();
-        List<String> l1 = new LinkedList<>();
+    public void StartGame(int xi, int yi, int xj, int yj){
+        Player winner = null;
+
+
+        while(winner == null){
+            Player currPlayer = chance.remove();
+            Square s = board[xi][yi];
+            if(s.piece.color != currPlayer.color || s.isOccupied!=null &&s.isOccupied.color !=currPlayer.color){
+                System.out.println("Wrong piece selected");
+            }else{
+                Piece piece = s.piece;
+                IMove moveStrategy = piece.moveStrategy;
+               int[][] moves = moveStrategy.moveStrategy();
+               for(int[] move:moves){
+                   int sr = xi;
+                   int sc = yi;
+                   int tr = sr+move[0];
+                   int tc = sc+move[1];
+                   if(tr>=0 && tc>=0 &&tr<8 && tc<8 &&(board[tr][tc].isOccupied==null ||board[tr][tc].isOccupied.color!=currPlayer.color)){
+                       if(tr == xj && tc ==yj){
+                           board[sr][sc].isOccupied =null;
+                           board[tr][tc].isOccupied = piece;
+                       }
+                   }
+               }
+               chance.addLast(currPlayer);
+            }
+        }
+        return;
     }
 
     public void PrepareBoard(){
-        Square[][] board = new Square[8][8];
+        board = new Square[8][8];
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 if( i%2==0){

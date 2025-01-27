@@ -5,7 +5,6 @@ import java.util.List;
 
 public class VendingMachingDP {
     public static void main(String args[]) throws Exception {
-//
         int c =0;
         Shelf[] shelves = new Shelf[10];
         for(int i=0;i<10;i++){
@@ -29,18 +28,18 @@ public class VendingMachingDP {
         VendingMachine vm = new VendingMachine(shelves);
         State state = vm.getVMState();
 
-//        //Set machine to Idle state
+//        Set machine to Idle state
 //        vm.setState(vm);
-
 
         //Enter coin
         List<Coins> coins= new ArrayList<>();
         coins.add(Coins.Five_Rupee_Coin);
         coins.add(Coins.Ten_Rupee_Coin);
-       state.pressInsertCoin(vm);
-       state = vm.getVMState();
-       int amountEntered= state.EnterCoin(vm,coins);
-        //Enter Selection Code state
+        state.pressInsertCoin(vm);
+        state = vm.getVMState();
+        int amountEntered= state.EnterCoin(vm,coins);
+
+       //Enter Selection Code state
 
         state.EnterSelectionCodeState(vm);
         state = vm.getVMState();

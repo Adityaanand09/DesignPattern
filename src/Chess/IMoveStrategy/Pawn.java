@@ -8,7 +8,7 @@ public class Pawn implements IMove{
      * @return
      */
     @Override
-    public int[][] moveStrategy(PieceType pieceType) {
+    public int[][] moveStrategy() {
         return new int[][]{{1,0},{1,1}};
     }
 }

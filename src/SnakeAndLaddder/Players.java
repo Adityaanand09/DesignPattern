@@ -11,10 +11,6 @@ public class Players {
         this.id = id;
     }
 
-    Players(Players p){
-        this.pl = p;
-    }
-
     public void SetPlayerCurrentPosition(Players p, int pos){
         p.currentPos = pos;
     }

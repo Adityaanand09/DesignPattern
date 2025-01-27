@@ -2,20 +2,20 @@ package ParkingLotLLD;
 
 public class EntranceGate {
     Ticket t;
-    ParkingSpotManagerFactory ps;
+    ParkingSpotManagerFactory psmf;
 
-    EntranceGate(Ticket t, ParkingSpotManagerFactory ps){
+    EntranceGate(Ticket t, ParkingSpotManagerFactory psmf){
         this.t =t;
-        this.ps =ps;
+        this.psmf =psmf;
     }
 
     public void setSpot(){
         Enum vehicleType = t.v.VehicleType;
         ParkingSpotManager psManager;
         if(vehicleType == VehicleType.FourWheeler){
-            psManager = ps.getPSManager("fourWheeler");
+            psManager = psmf.getPSManager("fourWheeler");
         }else{
-            psManager = ps.getPSManager("twoWheeler");
+            psManager = psmf.getPSManager("twoWheeler");
         }
        t.ps = psManager.getSpot();
     }
